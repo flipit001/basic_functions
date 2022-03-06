@@ -1,6 +1,8 @@
 import json
 import string
 import random
+from time import perf_counter, sleep
+import inspect
 def deletedupesforlists(List):
     return list(set(List))
 def find_substrings(string, sub_string):
@@ -42,4 +44,17 @@ def deletedupesforelements(string):
             temp1.remove(char)
     return ''.join(temp1[::-1])
 
+def timeit(function):
+    def wrapper(*args, **kwargs):
+        start = perf_counter()
+        val = function(*args, **kwargs)
+        print(f"function '{function.__name__}()' took {perf_counter() - start} seconds to execute!")
+        return val
+    
+    return wrapper
+@timeit
+def add(a,b):
+    sleep(2)
+    return a+b
 
+print(add(1,2))

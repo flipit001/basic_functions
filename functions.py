@@ -52,9 +52,3 @@ def timeit(function):
         return val
     
     return wrapper
-@timeit
-def add(a,b):
-    sleep(2)
-    return a+b
-
-print(add(1,2))
